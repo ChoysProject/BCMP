@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+"-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace = "Itemmapper">
+	<update id="updateitem" parameterType="cys.Item_info2">
+	update item_info set item_name=#{item_name},
+	item_price=#{item_price},item_color=#{item_color},item_size=#{item_size},
+	item_brand=#{item_brand},item_from=#{item_from},item_kind=#{item_kind},
+	item_material=#{item_material},item_target=#{item_target},item_ymd=#{item_ymd} where item_num=#{item_num}
+	</update>
+	<delete id="deleteitem" parameterType="HashMap">
+	delete from item_info
+	<where>
+	<if test="item_num != null">and item_num=#{item_num}</if>
+	<if test="item_name != null">and item_name=#{item_name}</if>
+	<if test="item_price != null">and item_price=#{item_price}</if>
+	<if test="item_color != null">and item_color=#{item_color}</if>
+	<if test="item_size != null">and item_size=#{item_size}</if>
+	<if test="item_brand != null">and item_brand=#{item_brand}</if>
+	<if test="item_from != null">and item_from=#{item_from}</if>
+	<if test="item_kind != null">and item_kind=#{item_kind}</if>
+	<if test="item_material != null">and item_material=#{item_material}</if>
+	<if test="item_target != null">and item_targer=#{item_target}</if>
+	<if test="item_ymd != null">and item_ymd=#{item_ymd}</if>
+	</where>
+	</delete>
+	<select id="getiteminfo" parameterType="HashMap"
+		resultType="cys.Item_info2">
+		select * from item_info
+		<where>
+			<if test="item_num != null">and item_num=#{item_num}</if>
+			<if test="item_name != null">and item_name=#{item_name}</if>
+			<if test="item_price != null">and item_price=#{item_price}</if>
+			<if test="item_color != null">and item_color=#{item_color}</if>
+			<if test="item_size != null">and item_size=#{item_size}</if>
+			<if test="item_brand != null">and item_brand=#{item_brand}</if>
+			<if test="item_from != null">and item_from=#{item_from}</if>
+			<if test="item_kind != null">and item_kind=#{item_kind}</if>
+			<if test="item_material != null">and item_material=#{item_material}</if>
+			<if test="item_target != null">and item_target=#{item_target}</if>
+			<if test="item_ymd != null">and item_ymd=#{item_ymd}</if>
+		</where>
+				order by item_num
+	</select>
+	<insert id="putitem" parameterType="cys.Item_info2">
+	insert into item_info values(#{item_num},#{item_name},
+	#{item_price},#{item_from},#{item_size},#{item_brand}
+	,#{item_color},#{item_kind},#{item_material},#{item_ymd}
+	,#{item_target})
+	</insert>
+</mapper>
