@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace = "LoginMapper">
-	<select id="get_id" parameterType="jij.dto.CustomerInfo" resultType="jij.dto.CustomerInfo">
-		select id as cust_id, password as cust_pwd from customer where id = #{cust_id} and password = #{cust_pwd}
-	</select>
-</mapper>
